@@ -1,5 +1,6 @@
 import { useState } from "react";
 import dataTest from "../data/dataTest";
+import TimerComponent from "./TimerComponent";
 
 function QuizBoard(props)
 {
@@ -22,10 +23,6 @@ function QuizBoard(props)
         </div>
     );
 
-    // const {score} = props;
-    // const onFinish = props.onFinish;
-    // const [userScore, setUserScore] = useState(score);
-
     const isRight = (right) => {
         if(right)
             setScore((prevCounter) => prevCounter +1);
@@ -34,7 +31,7 @@ function QuizBoard(props)
     return (
         <>
         <h1>Loading quiz...</h1>
-        {/* <h2>{dataTest.question}</h2> */}
+        <TimerComponent />
         {listItems[0]}
         <p>Now u have {score} points</p>
         <button className = "btn-exit" onClick={onFinish}>Exit</button>
