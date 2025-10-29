@@ -1,19 +1,9 @@
-import { useEffect, useState } from "react";
+import {useTimer} from "../hooks/useTimer";
 
-function TimerComponent(props){
+function TimerComponent({allTime, onTimeOver})
+{
 
-    const {allTime} = props;
-    const [timer, setTimer] = useState(6); //брати з пропсів?
-
-    const tick = () => {
-        setTimer((prevCount) => (prevCount - 1) < 0 ? 0 : prevCount - 1);
-    };
-
-    useEffect(() => {
-        const interval = setInterval(() => {tick()},1000)
-
-        return () => clearInterval(interval);
-    }, []);
+    const {timer} = useTimer(allTime, onTimeOver);
 
     return (
         <>
