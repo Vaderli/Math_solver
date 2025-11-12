@@ -1,4 +1,5 @@
-function QuizBoard({ question, onAnswer }) {
+function QuizBoard({ question, onAnswer }) 
+{
   return (
     <div className="quiz-board">
       <h3>{question.question}</h3>
