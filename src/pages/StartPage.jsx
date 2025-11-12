@@ -1,4 +1,4 @@
-function StartPage({onStart})
+function StartPage({onStart, onSettings })
 {
     return (
         <>
@@ -8,7 +8,10 @@ function StartPage({onStart})
           Show your power in Math
         </p>
         <button className = "btn-start" onClick={onStart}>
-            Start
+          Start
+        </button>
+        <button className="btn-settings" onClick={onSettings}>
+          Settings
         </button>
       </div>
       </>
