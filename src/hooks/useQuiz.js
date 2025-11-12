@@ -1,26 +1,41 @@
 import { useState, useEffect } from "react";
-import dataTest from "../data/dataTest";
+import { testGenerate } from "../utils/testGenerate";
 
-export function useQuiz(onFinish) {
+export function useQuiz({ settings, onFinish }) {
+  const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
 
-  const question = dataTest[currentIndex];
-  const total = dataTest.length;
+  useEffect(() => {
+    if (settings) 
+    {
+      const generated = testGenerate(settings.difficulty, settings.count);
+      setQuestions(generated);
+      setCurrentIndex(0);
+      setScore(0);
+    }
+  }, [settings]);
+
+  const total = questions.length;
+  const question = total > 0 ? questions[currentIndex] : null;
   const isLast = currentIndex === total - 1;
 
   function doAnswer(selected) 
   {
-    setScore((prev) => {
-      const updated = selected === question.answer ? prev + 1 : prev;
-      if (isLast && onFinish) 
-      {
-        onFinish(updated);
-      }
-      return updated;
-    });
+    if (!question) 
+      return;
 
-    if (!isLast) {
+    const correct = selected === question.answer;
+    const newScore = score + (correct ? 1 : 0);
+    setScore(newScore);
+
+    if (isLast) 
+    {
+      if (onFinish) 
+        onFinish(newScore);
+    } 
+    else 
+      {
       setCurrentIndex((i) => i + 1);
     }
   }
@@ -30,13 +45,6 @@ export function useQuiz(onFinish) {
     if (onFinish) 
       onFinish(score);
   }
-
-  useEffect(() => {
-    if (!question && onFinish) 
-    {
-      onFinish(score);
-    }
-  }, [question]);
 
   return {
     question,
