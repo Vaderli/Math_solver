@@ -1,23 +1,25 @@
+import { useNavigate, useParams } from "react-router-dom";
 import SettingsForm from "../components/SettingsForm";
 import { useSettings } from "../hooks/useSettings";
 
-function SettingsPage({ onBack }) 
-{
-    const {settings, updateSettings} = useSettings();
+function SettingsPage() {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const { settings, updateSettings } = useSettings();
 
-    const handleSave  = (data) => {
-        updateSettings(data);
-        alert("Settings saved!");
-        onBack();
+  const handleSave = (data) => {
+    updateSettings(data);
+    navigate(`/`);
   };
 
   return (
     <>
       <h2>Settings</h2>
-      <SettingsForm
+
+      <SettingsForm 
         defaultValues={settings}
         onSave={handleSave}
-        onCancel={onBack}
+        onCancel={handleSave}
       />
     </>
   );

@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 
 const modalRootEl = document.getElementById("modal");
 
-export function Portal({ open, onClose, children }) 
+export function Portal({ open, children }) 
 {
   if (!open) 
     return null;
