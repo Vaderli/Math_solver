@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import SettingsForm from "../../components/SettingsForm";
 import { useSettings } from "../../hooks/useSettings";
-import "./SettingsPage.css";
+import styles from "./SettingsPage.module.css";
 
 
 function SettingsPage() {
@@ -15,8 +15,8 @@ function SettingsPage() {
 
   return (
     <>
-      <div className="settingWrapper">
-      <h2 className="settingsTitle">Settings</h2>
+      <div className={styles.settingWrapper}>
+      <h2 className={styles.settingsTitle}>Settings</h2>
 
       <SettingsForm 
         defaultValues={settings}

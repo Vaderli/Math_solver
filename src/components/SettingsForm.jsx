@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import styles from "../pages/SettingsPage/SettingsPage.module.css";
 
 function SettingsForm({ defaultValues, onSave, onCancel }) 
 {
@@ -11,7 +12,7 @@ function SettingsForm({ defaultValues, onSave, onCancel })
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="settings-form">
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.settingsForm}>
       <label>Difficulty:</label>
       <select {...register("difficulty")}>
         <option value="easy">Easy</option>
@@ -22,11 +23,11 @@ function SettingsForm({ defaultValues, onSave, onCancel })
       <label>Count of questions:</label>
       <input type="number" {...register("count")} min="4" max="20" />
 
-      <div className="settings-buttons">
-        <button type="submit" className="settings-btn btn-save">
+      <div className={styles.settingsButtons}>
+        <button type="submit" className={`${styles.settingsBtn} ${styles.btnSave}`}> 
           Save
         </button>
-        <button className="settings-btn btn-cancel" type="button" onClick={onCancel}>
+        <button className={`${styles.settingsBtn} ${styles.btnCancel}`} type="button" onClick={onCancel}>
           Back
         </button>
       </div>

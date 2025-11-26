@@ -1,15 +1,15 @@
-import "./Result.css";
+import styles from "./Result.module.css";
 
 function Result({ score, onRestart }) {
   return (
-    <div className="resultWrapper">
+    <div className={styles.resultWrapper}>
       {/* <div className="stickerWrapper">
         <img src={sticker} alt="sticker" className={styles.sticker}/>
       </div> */}
 
-      <h2 className="title">Results</h2>
-      <p className = "score">Your score: <b>{score}</b></p>
-      <button className="btnRestart" onClick={onRestart}>
+      <h2 className={styles.title}>Results</h2>
+      <p className = {styles.score}>Your score: <b>{score}</b></p>
+      <button className={styles.btnRestart} onClick={onRestart}>
         Restart
       </button>
     </div>

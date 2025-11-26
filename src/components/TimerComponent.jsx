@@ -1,4 +1,5 @@
 import {useTimer} from "../hooks/useTimer";
+import styles from "../pages/TestPage/TestPage.module.css";
 
 function TimerComponent({allTime, onTimeOver, isTick, key})
 {
@@ -7,7 +8,7 @@ function TimerComponent({allTime, onTimeOver, isTick, key})
 
     return (
         <>
-        <div className="timer">
+        <div className={styles.timer}>
         <span>{timer}</span>
         </div>
         </>

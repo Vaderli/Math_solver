@@ -1,4 +1,4 @@
-.start-wrapper {
+.startWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.start-title {
+.startTitle {
   font-family: "Marker Felt", "Comic Sans MS", cursive;
   font-size: 3.2rem;
   color: #1a1a1a;
@@ -19,20 +19,20 @@
   text-shadow: 2px 2px 0 #ffdf6b;
 }
 
-.start-subtitle {
+.startSubtitle {
   font-family: "Comic Sans MS", cursive;
   font-size: 1.2rem;
   margin-bottom: 25px;
   opacity: 0.8;
 }
 
-.start-buttons {
+.startButtons {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.sticker-btn {
+.stickerBtn {
   width: 180px;
   padding: 18px 0;
   font-size: 1.3rem;
@@ -53,12 +53,12 @@
   transform: rotate(-1.5deg);
 }
 
-.sticker-btn:hover {
+.stickerBtn:hover {
   transform: rotate(0deg) scale(1.05);
   box-shadow: 6px 6px 0 #b9a64c;
 }
 
-.sticker-btn::before {
+.stickerBtn::before {
   content: "";
   position: absolute;
   top: -6px;
@@ -73,11 +73,11 @@
   transform: rotate(3deg);
 }
 
-.settings-btn {
+.settingsBtn {
   background: #aee9ff;
   box-shadow: 4px 4px 0 #79b5cc;
 }
-.settings-btn:hover {
+.settingsBtn:hover {
   box-shadow: 6px 6px 0 #58889a;
 }
 

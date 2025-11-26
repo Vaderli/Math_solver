@@ -5,7 +5,7 @@ import TimerComponent from "../../components/TimerComponent";
 import { useQuiz } from "../../hooks/useQuiz";
 import { useSettings } from "../../hooks/useSettings";
 import Result from "../Result/Result";
-import "./TestPage.css";
+import styles from "./TestPage.module.css";
 import { useNavigate } from "react-router-dom";
 
 
@@ -38,7 +38,7 @@ function TestPage() {
 
   return (
     <>
-    <div className="test-page">
+    <div className={styles.testPage}>
       <h2>Question {currentIndex + 1} / {total}</h2>
 
       <TimerComponent
@@ -54,7 +54,7 @@ function TestPage() {
         <QuizBoard question={question} onAnswer={doAnswer} />
       )}
 
-      <button className="btn-exit" onClick={finishQuiz}>Exit</button>
+      <button className={styles.btnExit} onClick={finishQuiz}>Exit</button>
     </div>
     <Modal open={showModal} onClose={onCloseModal}>
       <Result score={score} onRestart={onRestart} />

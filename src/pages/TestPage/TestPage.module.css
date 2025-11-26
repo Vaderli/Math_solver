@@ -1,4 +1,4 @@
-.test-page {
+.testPage {
   background: #fffef7;
   padding: 30px;
   margin-top: 20px;
@@ -23,7 +23,7 @@
   }
 }
 
-.test-page h2 {
+.testPage h2 {
   font-family: "Marker Felt", "Comic Sans MS", cursive;
   font-size: 2rem;
   margin-bottom: 15px;
@@ -56,7 +56,7 @@
 
 /* -------------------- QUIZ BOARD */
 
-.quiz-board {
+.quizBoard {
   margin-top: 20px;
   background: #fff;
   padding: 25px;
@@ -65,7 +65,7 @@
   box-shadow: 3px 3px 0px #c1c1c1;
 }
 
-.quiz-board h3 {
+.quizBoard h3 {
   margin-bottom: 20px;
   font-family: "Comic Sans MS", cursive;
   font-size: 1.6rem;
@@ -74,13 +74,13 @@
 
 /* -------------------- ANSWER OPTIONS */
 
-.quiz-options {
+.quizOptions {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.quiz-options li {
+.quizOptions li {
   background: #f3f3ff;
   padding: 12px 15px;
   margin-bottom: 12px;
@@ -95,7 +95,7 @@
   transform: rotate(-1deg);
 }
 
-.quiz-options li:hover {
+.quizOptions li:hover {
   background: #dcdcff;
   transform: rotate(0deg) scale(1.03);
 
@@ -105,7 +105,7 @@
 
 /* -------------------- EXIT BUTTON    */
 
-.btn-exit {
+.btnExit {
   margin-top: 25px;
   background: #ff6b6b !important;
   color: white !important;
@@ -120,7 +120,7 @@
   transition: 0.2s;
 }
 
-.btn-exit:hover {
+.btnExit:hover {
   transform: rotate(0deg) scale(1.06);
   box-shadow: inset 0.25em 0.25em rgba(255, 145, 145, 0.6);
 }

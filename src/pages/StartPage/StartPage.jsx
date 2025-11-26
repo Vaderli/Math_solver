@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useEffect } from "react";
-import "./StartPage.css";
+import styles from "./StartPage.module.css";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 function StartPage() {
@@ -17,20 +17,20 @@ function StartPage() {
   }, [id, setUserId]);
 
   return (
-    <div className="start-wrapper">
-      <h1 className="start-title">Math Solver</h1>
-      <p className="start-subtitle">Show your power in Math</p>
+    <div className={styles.startWrapper}>
+      <h1 className={styles.startTitle}>Math Solver</h1>
+      <p className={styles.startSubtitle}>Show your power in Math</p>
 
-      <div className="start-buttons">
+      <div className={styles.startButtons}>
         <button
-          className="sticker-btn"
+          className={styles.stickerBtn}
           onClick={() => navigate(`/game/${id}`)}
         >
           Start
         </button>
 
         <button
-          className="sticker-btn settings-btn"
+          className={`${styles.stickerBtn} ${styles.settingsBtn}`}
           onClick={() => navigate(`/settings/${id}`)}
         >
           Settings
