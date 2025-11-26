@@ -1,8 +1,8 @@
 import { Routes, Route, useNavigate, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
-import StartPage from "./pages/StartPage";
-import TestPage from "./pages/TestPage";
-import SettingsPage from "./pages/SettingsPage";
+import StartPage from "./pages/StartPage/StartPage";
+import TestPage from "./pages/TestPage/TestPage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import './App.css';
 
 function App() {
