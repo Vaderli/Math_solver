@@ -1,9 +1,9 @@
 import {useTimer} from "../hooks/useTimer";
 
-function TimerComponent({allTime, onTimeOver})
+function TimerComponent({allTime, onTimeOver, isTick})
 {
 
-    const {timer} = useTimer(allTime, onTimeOver);
+    const {timer} = useTimer(allTime, onTimeOver, isTick);
 
     return (
         <>

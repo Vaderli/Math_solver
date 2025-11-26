@@ -20,13 +20,13 @@ function SettingsForm({ defaultValues, onSave, onCancel })
       </select>
 
       <label>Count of questions:</label>
-      <input type="number" {...register("count")} min="4" max="12" />
+      <input type="number" {...register("count")} min="4" max="20" />
 
-      <div className="buttons">
-        <button type="submit" className="btn-save">
+      <div className="settings-buttons">
+        <button type="submit" className="settings-btn btn-save">
           Save
         </button>
-        <button type="button" onClick={onCancel}>
+        <button className="settings-btn btn-cancel" type="button" onClick={onCancel}>
           Back
         </button>
       </div>
