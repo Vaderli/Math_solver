@@ -1,0 +1,85 @@
+.resultWrapper {
+  position: relative;
+  background: #fffef6;
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  border: 2px dashed #c7c7c7;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.title {
+  font-family: "Marker Felt", "Comic Sans MS", cursive;
+  font-size: 2.2rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.score {
+  font-size: 1.4rem;
+  margin: 10px 0 20px;
+}
+
+.btnRestart {
+  width: 150px;
+  height: 70px;
+  font-size: 1.2rem;
+  background: #ffeb3b;
+  border: none;
+  color: #333;
+  font-family: "Comic Sans MS", cursive;
+  cursor: pointer;
+
+  border-radius: 10px;
+  box-shadow: 3px 3px 0px #d6c200;
+
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btnRestart:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0px #d6c200;
+}
+
+.stickerWrapper {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  animation: stickerDrop 0.5s ease-out;
+}
+
+.sticker {
+  width: 90px;
+  height: auto;
+  user-select: none;
+  filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.2));
+
+  animation: stickerPop 0.4s ease-out;
+}
+
+/* --- Animations --- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes stickerDrop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60px) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) rotate(-4deg);
+  }
+}
+
+@keyframes stickerPop {
+  0%   { transform: scale(0.6) rotate(-8deg); }
+  60%  { transform: scale(1.1) rotate(-4deg); }
+  100% { transform: scale(1)   rotate(-4deg); }
+}

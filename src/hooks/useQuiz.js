@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { testGenerate } from "../utils/testGenerate";
 
-export function useQuiz({ settings, onFinish }) {
+export function useQuiz({ settings, onFinish, testKey }) {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -14,7 +14,7 @@ export function useQuiz({ settings, onFinish }) {
       setCurrentIndex(0);
       setScore(0);
     }
-  }, [settings]);
+  }, [settings, testKey]);
 
   const total = questions.length;
   const question = total > 0 ? questions[currentIndex] : null;
@@ -31,8 +31,7 @@ export function useQuiz({ settings, onFinish }) {
 
     if (isLast) 
     {
-      if (onFinish) 
-        onFinish(newScore);
+      onFinish(newScore);
     } 
     else 
       {
@@ -49,6 +48,7 @@ export function useQuiz({ settings, onFinish }) {
   return {
     question,
     score,
+    setScore,
     currentIndex,
     total,
     isLast,

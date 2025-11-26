@@ -1,0 +1,66 @@
+import { useState } from "react";
+import { Modal } from "../../components/Modal";
+import QuizBoard from "../../components/QuizBoard";
+import TimerComponent from "../../components/TimerComponent";
+import { useQuiz } from "../../hooks/useQuiz";
+import { useSettings } from "../../hooks/useSettings";
+import Result from "../Result/Result";
+import styles from "./TestPage.module.css";
+import { useNavigate } from "react-router-dom";
+
+
+function TestPage() {
+
+  const onFinish = (finalScore) => {
+    setScore(finalScore);
+    setShowModal(true);
+  };
+
+  const { settings } = useSettings();
+  const [testKey, setTestKey] = useState(0);
+  const { question, score, setScore, currentIndex, total, doAnswer, finishQuiz } =
+    useQuiz({ settings, onFinish, testKey });
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+
+  const onRestart = () => {
+    setScore(0);
+    setTestKey(prev => prev + 1);
+    setShowModal(false);
+  };
+
+  const onCloseModal = () => {
+    setShowModal(false);
+    navigate("/start");
+  };
+
+  return (
+    <>
+    <div className={styles.testPage}>
+      <h2>Question {currentIndex + 1} / {total}</h2>
+
+      <TimerComponent
+        allTime={settings.time}
+        onTimeOver={finishQuiz}
+        isTick = {showModal}
+        key = {testKey}
+      />
+
+      <p>Score: <b>{score}</b></p>
+
+      {question && (
+        <QuizBoard question={question} onAnswer={doAnswer} />
+      )}
+
+      <button className={styles.btnExit} onClick={finishQuiz}>Exit</button>
+    </div>
+    <Modal open={showModal} onClose={onCloseModal}>
+      <Result score={score} onRestart={onRestart} />
+    </Modal>
+      </>
+  );
+}
+
+export default TestPage;

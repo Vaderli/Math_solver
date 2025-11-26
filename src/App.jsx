@@ -1,60 +1,31 @@
-import { useState } from 'react';
-import './App.css';
-import StartPage from './pages/StartPage';
-import TestPage from './pages/TestPage';
-import Result from './pages/Result';
-import SettingsPage from './pages/SettingsPage';
-import { Modal } from "./components/Modal";
+import { Routes, Route, Navigate, useNavigate, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 
+import StartPage from "./pages/StartPage/StartPage";
+import TestPage from "./pages/TestPage/TestPage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import './App.css';
+import Header from "./components/Layout/Header";
 
 function App() {
-  const [page, setPage] = useState('StartPage');
-  const [score, setScore] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const [testKey, setTestKey] = useState(0);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={null}>
 
+        <Route path="/start" element={<StartPage/>}/>
+      <Route element={<Header />}>
+        <Route path="/game/:userId" element={<TestPage/>}/>
+        <Route path="/settings/:userId" element={<SettingsPage/>}/>
+      </Route>
+      </Route>
+      </>
+    )
+  )
 
-  const onStart = () => {
-    setScore(0);
-    setTestKey(prev => prev + 1);
-    setPage("TestPage");
-  };
-
-  const onFinish = (finalScore) => {
-    setScore(finalScore);
-    setShowModal(true);
-  };
-
-  const onSettings = () => {
-    setPage("SettingsPage");
-  };
-
-  const onRestart = () => {
-    setScore(0);
-    setTestKey(prev => prev + 1);
-    setShowModal(false);
-    setPage("TestPage");
-  };
-
-  const onBackSettings = () => {
-    setPage("StartPage");
-  };
-
-  const onCloseModal = () => {
-    setShowModal(false);
-    setPage("StartPage");
-  };
-
-  return (
-    <>
-      {page === "StartPage" && <StartPage onStart={onStart} onSettings={onSettings} />}
-      {page === "SettingsPage" && (<SettingsPage onBack={onBackSettings} />)}
-      {page === "TestPage" && <TestPage onFinish={onFinish} key={testKey}   />}
-      <Modal open={showModal} onClose={onCloseModal}>
-        <Result score={score} onRestart={onRestart} />
-      </Modal>
-    </>
+  return(
+    <RouterProvider router={router}/>
   );
 }
+
 
 export default App;
