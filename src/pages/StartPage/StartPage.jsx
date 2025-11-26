@@ -2,20 +2,19 @@ import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useEffect } from "react";
 import "./StartPage.css";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 function StartPage() {
   const navigate = useNavigate();
+  const [id, setUserId] = useLocalStorage("userId", null);
 
   useEffect(() => {
-    let id = localStorage.getItem("userId");
     if (!id) 
     {
-      id = uuid();
-      localStorage.setItem("userId", id);
+      const newId = uuid();
+      setUserId(newId);
     }
-  }, []);
-
-  const id = localStorage.getItem("userId");
+  }, [id, setUserId]);
 
   return (
     <div className="start-wrapper">

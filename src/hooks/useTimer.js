@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-export function useTimer(allTime = 180, onTimeOver, isTick) {
+export function useTimer(allTime = 180, onTimeOver, isTick, key) {
   const [timer, setTimer] = useState(allTime);
   const intervalRef = useRef(null);
 
@@ -30,7 +30,7 @@ export function useTimer(allTime = 180, onTimeOver, isTick) {
   useEffect(() => {
     intervalRef.current = setInterval(tick, 1000);
     return () => clearInterval(intervalRef.current);
-  }, []);
+  }, [key]);
 
   return { timer, tick };
 }

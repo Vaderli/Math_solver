@@ -45,6 +45,7 @@ function TestPage() {
         allTime={settings.time}
         onTimeOver={finishQuiz}
         isTick = {showModal}
+        key = {testKey}
       />
 
       <p>Score: <b>{score}</b></p>
