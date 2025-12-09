@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Modal } from "../../components/Modal";
-import QuizBoard from "../../components/QuizBoard";
-import TimerComponent from "../../components/TimerComponent";
+import { Modal } from "../../components/Modal/Modal";
+import QuizBoard from "../../components/QuizBoard/QuizBoard";
+import TimerComponent from "../../components/TimerComponent/TimerComponent";
 import { useQuiz } from "../../hooks/useQuiz";
 import { useSettings } from "../../hooks/useSettings";
 import Result from "../Result/Result";

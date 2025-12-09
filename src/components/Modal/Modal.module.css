@@ -1,0 +1,11 @@
+.btnClose{
+    width: 130px;
+    background-color: rgb(183, 27, 27);
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+.btnClose:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0px #812810;
+}

@@ -1,0 +1,45 @@
+.quizBoard {
+  margin-top: 20px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 3px 3px 0px #c1c1c1;
+}
+
+.quizBoard h3 {
+  margin-bottom: 20px;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 1.6rem;
+}
+
+
+.quizOptions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quizOptions li {
+  background: #f3f3ff;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #aaa8ff;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  transition: 0.18s ease;
+  box-shadow: 1px 1px 0px #7572d1;
+
+  transform: rotate(-1deg);
+}
+
+.quizOptions li:hover {
+  background: #dcdcff;
+  transform: rotate(0deg) scale(1.03);
+
+  box-shadow: 2px 2px 0px #5f5cd1;
+}
+
+

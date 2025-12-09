@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import SettingsForm from "../../components/SettingsForm";
+import SettingsForm from "../../components/SettingsForm/SettingsForm";
 import { useSettings } from "../../hooks/useSettings";
 import styles from "./SettingsPage.module.css";
 

@@ -1,5 +1,5 @@
-import {useTimer} from "../hooks/useTimer";
-import styles from "../pages/TestPage/TestPage.module.css";
+import {useTimer} from "../../hooks/useTimer";
+import styles from "./TimerComponent.module.css";
 
 function TimerComponent({allTime, onTimeOver, isTick, key})
 {

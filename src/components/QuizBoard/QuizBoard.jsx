@@ -1,4 +1,4 @@
-import styles from "../pages/TestPage/TestPage.module.css";
+import styles from "./QuizBoard.module.css";
 
 function QuizBoard({ question, onAnswer }) 
 {

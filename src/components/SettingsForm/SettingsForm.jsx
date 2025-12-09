@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import styles from "../pages/SettingsPage/SettingsPage.module.css";
+import styles from "./SettingsForm.module.css";
 
 function SettingsForm({ defaultValues, onSave, onCancel }) 
 {
