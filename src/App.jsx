@@ -5,6 +5,7 @@ import TestPage from "./pages/TestPage/TestPage";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import './App.css';
 import Header from "./components/Layout/Header";
+import ResultTable from "./pages/ResultTable/ResultTable";
 
 function App() {
   const router = createBrowserRouter(
@@ -17,6 +18,7 @@ function App() {
       <Route element={<Header />}>
         <Route path="/game/:userId" element={<TestPage/>}/>
         <Route path="/settings/:userId" element={<SettingsPage/>}/>
+        <Route path="/results/:userId" element={<ResultTable />} />
       </Route>
       </>
     )

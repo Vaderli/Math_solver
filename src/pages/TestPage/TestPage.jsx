@@ -8,17 +8,34 @@ import Result from "../Result/Result";
 import styles from "./TestPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUserGuard } from "../../hooks/useUserGuard";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+
 
 
 
 function TestPage() {
 
   const userId = useUserGuard();
-  
+
+  const resultsKey = `results_${userId}`;
+  const [results, setResults] = useLocalStorage(resultsKey, []);
+
   const onFinish = (finalScore) => {
     setScore(finalScore);
+    saveResult(finalScore);
     setShowModal(true);
   };
+
+  const saveResult = (finalScore) => {
+    const newResult = {
+      score: finalScore,
+      total,
+      date: new Date().toISOString(),
+    };
+
+    setResults((prev) => [newResult, ...prev]);
+  };
+
 
   const { settings } = useSettings();
   const [testKey, setTestKey] = useState(0);
