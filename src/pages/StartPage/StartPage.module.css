@@ -81,3 +81,11 @@
   box-shadow: 6px 6px 0 #58889a;
 }
 
+.resBtn {
+  background: #ffaefb;
+  box-shadow: 4px 4px 0 #cc79b9;
+}
+.resBtn:hover {
+  box-shadow: 6px 6px 0 #9a588a;
+}
+

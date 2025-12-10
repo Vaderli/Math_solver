@@ -30,7 +30,7 @@ function StartPage() {
         </button>
 
         <button
-          className={styles.stickerBtn}
+          className={`${styles.stickerBtn} ${styles.resBtn}`}
           onClick={() => navigate(`/results/${id}`)}
         >
           Results
