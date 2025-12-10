@@ -1,34 +1,50 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+
+function getUserId() 
+{
+  return localStorage.getItem("userId");
+}
+
+const userId = getUserId();
+
+const savedResults = localStorage.getItem(`results_${userId}`);
+
+const initialState = savedResults
+  ? JSON.parse(savedResults)
+  : {
+      byId: {},
+      allIds: []
+    };
 
 const resultsSlice = createSlice({
   name: "results",
-  initialState: { byId: {}, allIds: [] },
+  initialState,
 
   reducers: {
-    addResult: {
-      reducer(state, action) {
-        const { id, data } = action.payload;
+    addResult: (state, action) => {
+      const { score, total } = action.payload;
 
-        state.byId[id] = data;
-        state.allIds.unshift(id);
-      },
+      const id = uuidv4();
 
-      prepare(score, total) {
-        const id = nanoid();
-        return {
-          payload: {
-            id,
-            data: {
-              id,
-              score,
-              total,
-              date: new Date().toISOString(),
-            },
-          },
-        };
-      },
-    },
-  },
+      state.byId[id] = {
+        id,
+        score,
+        total,
+        date: new Date().toISOString(),
+      };
+
+      state.allIds.unshift(id);
+
+      if (state.allIds.length > 4) 
+      {
+        const removed = state.allIds.pop();
+        delete state.byId[removed];
+      }
+
+      localStorage.setItem(`results_${userId}`, JSON.stringify(state));
+    }
+  }
 });
 
 export const { addResult } = resultsSlice.actions;
