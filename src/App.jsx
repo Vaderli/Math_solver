@@ -7,6 +7,9 @@ import './App.css';
 import Header from "./components/Layout/Header";
 import ResultTable from "./pages/ResultTable/ResultTable";
 
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,7 +28,9 @@ function App() {
   )
 
   return(
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router}/>
+    </Provider>
   );
 }
 
