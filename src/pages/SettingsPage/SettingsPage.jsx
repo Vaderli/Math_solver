@@ -3,15 +3,22 @@ import SettingsForm from "../../components/SettingsForm/SettingsForm";
 import { useSettings } from "../../hooks/useSettings";
 import styles from "./SettingsPage.module.css";
 import { useUserGuard } from "../../hooks/useUserGuard";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSettings } from "../../store/settingsSlice";
+
 
 
 function SettingsPage() {
   const userId = useUserGuard();
   const navigate = useNavigate();
-  const { settings, updateSettings } = useSettings();
+  // const { settings, updateSettings } = useSettings();
+
+  const settings = useSelector(state => state.settings);
+  const dispatch = useDispatch();
 
   const handleSave = (data) => {
-    updateSettings(data);
+    // updateSettings(data);
+    dispatch(updateSettings(data));
     navigate(`/start`);
   };
 

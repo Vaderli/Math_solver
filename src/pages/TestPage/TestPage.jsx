@@ -10,19 +10,22 @@ import { useNavigate } from "react-router-dom";
 import { useUserGuard } from "../../hooks/useUserGuard";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-
+import { addResult } from "../../store/resultsSlice";
+import { useDispatch } from "react-redux";
 
 
 function TestPage() {
 
   const userId = useUserGuard();
 
+  const dispatch = useDispatch();
   const resultsKey = `results_${userId}`;
   const [results, setResults] = useLocalStorage(resultsKey, []);
 
   const onFinish = (finalScore) => {
     setScore(finalScore);
-    saveResult(finalScore);
+    dispatch(addResult(finalScore, total));
+    saveResult(finalScore); // ?????????????????????????????????/
     setShowModal(true);
   };
 
@@ -35,7 +38,6 @@ function TestPage() {
 
   setResults((prev) => {
     const updated = [newResult, ...prev];
-
     if (updated.length > 4) 
     {
       updated.pop();
