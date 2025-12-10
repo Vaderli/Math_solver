@@ -7,10 +7,14 @@ import { useSettings } from "../../hooks/useSettings";
 import Result from "../Result/Result";
 import styles from "./TestPage.module.css";
 import { useNavigate } from "react-router-dom";
+import { useUserGuard } from "../../hooks/useUserGuard";
+
 
 
 function TestPage() {
 
+  const userId = useUserGuard();
+  
   const onFinish = (finalScore) => {
     setScore(finalScore);
     setShowModal(true);

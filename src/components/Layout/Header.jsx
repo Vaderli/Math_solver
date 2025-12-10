@@ -4,19 +4,10 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import styles from "./Header.module.css";
 
 function Header() {
-    const [userId, setUserId] = useLocalStorage("userId", null);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-    if (!userId) 
-    {
-      navigate("/start")
-    }
-    }, []);
 
   return (
     <>
-    <header className="header">
+    <header className={styles.header}>
       <h1>MathSolver</h1>
     </header>
     <Outlet/>

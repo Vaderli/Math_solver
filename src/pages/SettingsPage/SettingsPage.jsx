@@ -2,9 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import SettingsForm from "../../components/SettingsForm/SettingsForm";
 import { useSettings } from "../../hooks/useSettings";
 import styles from "./SettingsPage.module.css";
+import { useUserGuard } from "../../hooks/useUserGuard";
 
 
 function SettingsPage() {
+  const userId = useUserGuard();
   const navigate = useNavigate();
   const { settings, updateSettings } = useSettings();
 
