@@ -27,14 +27,23 @@ function TestPage() {
   };
 
   const saveResult = (finalScore) => {
-    const newResult = {
-      score: finalScore,
-      total,
-      date: new Date().toISOString(),
-    };
-
-    setResults((prev) => [newResult, ...prev]);
+  const newResult = {
+    score: finalScore,
+    total,
+    date: new Date().toISOString(),
   };
+
+  setResults((prev) => {
+    const updated = [newResult, ...prev];
+
+    if (updated.length > 4) 
+    {
+      updated.pop();
+    }
+    return updated;
+    });
+  };
+
 
 
   const { settings } = useSettings();
