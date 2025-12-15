@@ -8,7 +8,7 @@ import Header from "./components/Layout/Header";
 import ResultTable from "./pages/ResultTable/ResultTable";
 
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./store/store";
 
 function App() {
   const router = createBrowserRouter(

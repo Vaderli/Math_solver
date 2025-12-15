@@ -1,39 +1,36 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SettingsForm from "../../components/SettingsForm/SettingsForm";
-import { useSettings } from "../../hooks/useSettings";
 import styles from "./SettingsPage.module.css";
 import { useUserGuard } from "../../hooks/useUserGuard";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSettings } from "../../store/settingsSlice";
-
-
+import { setSettings } from "../../store/settingsSlice";
 
 function SettingsPage() {
-  const userId = useUserGuard();
+  useUserGuard();
   const navigate = useNavigate();
-  // const { settings, updateSettings } = useSettings();
-
-  const settings = useSelector(state => state.settings);
   const dispatch = useDispatch();
 
+  const settings = useSelector(state => state.settings);
+
   const handleSave = (data) => {
-    // updateSettings(data);
-    dispatch(updateSettings(data));
-    navigate(`/start`);
+    dispatch(setSettings(data));
+    navigate("/start");
+  };
+
+  const handleCancel = () => {
+    navigate("/start");
   };
 
   return (
-    <>
-      <div className={styles.settingWrapper}>
+    <div className={styles.settingWrapper}>
       <h2 className={styles.settingsTitle}>Settings</h2>
 
-      <SettingsForm 
+      <SettingsForm
         defaultValues={settings}
         onSave={handleSave}
-        onCancel={handleSave}
+        onCancel={handleCancel}
       />
-      </div>
-    </>
+    </div>
   );
 }
 
