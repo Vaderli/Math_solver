@@ -3,7 +3,7 @@ import SettingsForm from "../../components/SettingsForm/SettingsForm";
 import styles from "./SettingsPage.module.css";
 import { useUserGuard } from "../../hooks/useUserGuard";
 import { useDispatch, useSelector } from "react-redux";
-import { setSettings } from "../../store/settingsSlice";
+import { setSettings } from "../../features/settings/settingsSlice";
 
 function SettingsPage() {
   useUserGuard();

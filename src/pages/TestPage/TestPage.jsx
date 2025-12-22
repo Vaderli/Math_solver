@@ -8,7 +8,7 @@ import styles from "./TestPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUserGuard } from "../../hooks/useUserGuard";
 import { useDispatch, useSelector } from "react-redux";
-import { addResult } from "../../store/resultsSlice";
+import { addResult } from "../../features/results/resultsSlice";
 
 function TestPage() {
   useUserGuard();
