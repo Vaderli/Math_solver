@@ -48,6 +48,8 @@ This is React project "Math solver" - Math quiz with timer and points.
 - Розподілення локальних станів для тесту: [`src/pages/TestPage/TestPage.jsx`](/src/pages/TestPage/TestPage.jsx)
 - Окремий стан для налаштувань: [`src/pages/SettingsPage/SettingsPage.jsx`](./src/pages/SettingsPage/SettingsPage.jsx)
 - Глобальний стан результатів винесений у Redux Toolkit slice та відповідно структурований [`src/features/results/resultsSlice.js`](./src/features/results/resultsSlice.js)
+- Глобальний стан налаштувань тесту винесений в окремий Redux Toolkit slice з можливістю точкових оновлень,
+а також універсальний reducer `setSettings` для масового оновлення стану [`src/features/settings/settingsSlice.js`](./src/features/settings/settingsSlice.js)
 
 ---
 
