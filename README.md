@@ -1,5 +1,8 @@
 This is React project "Math solver" - Math quiz with timer and points. 
 
+## Author
+`Vadym Lishchynskyi`
+
 
 # Best practices
 
