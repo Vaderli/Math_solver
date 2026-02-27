@@ -1,87 +1,92 @@
+# Math Solver Quiz Application
+
 This is React project "Math solver" - Math quiz with timer and points. 
 
 ## Author
-`Vadym Lishchynskyi`
+Vadym Lishchynskyi
+
+Zhytomyr Polytechnic State University
+
+
 
 
 # Best practices
 
 ---
 
-## 1) Використання Redux Toolkit (RTK) замість “plain Redux”
+## 1) Using Redux Toolkit (RTK) instead of “plain Redux”
 
-- Менше boilerplate-коду
-- `configureStore` з налаштуваннями “з коробки”
-- Вбудовані DevTools та redux-thunk
-- Immer дозволяє писати “мутації” у reducer-ах без реальних мутацій
-- Все в одному пакеті
+- Less boilerplate code
+- `configureStore` with out-of-the-box settings
+- Built-in DevTools and redux-thunk
+- Immer allows you write “mutations” in reducers without actual mutations
+- All in one package
 
-- [`src/store/store.js`](./src/store/store.js) - головний файл RTK
-- [`src/features/`](./src/features/) - структура фіч для групування Redux-логіки
-
----
-
-## 2) Винесення логіки у custom hooks
-
-Винесення логіки з компонентів (таймери, робота з даними, запити) до кастомних хуків
-- компонент стає простішим і читабельнішим;
-- компонент відповідає за UI;
-- логіку можна повторно використовувати;
-- легше тестувати та підтримувати.
-
-[`src/hooks/`](./src/hooks/) - директорія з кастомними хуками
-- Кастомний хук для таймера [`src/hooks/useTimer.js`](./src/hooks/useTimer.js)
-- Компонент таймера (використання хуку таймера) [`src/components/TimerComponent/TimerComponent.jsx`](./src/components/TimerComponent/TimerComponent.jsx)
-- Окремий хук для регуляції та контролю проведення тесту [`src/hooks/useQuiz.js`](./src/hooks/useQuiz.js)
-- Безпосереднє використання хуку useQuiz для компонента [`src/pages/TestPage/`](./src/pages/TestPage/TestPage.jsx)
-- Кастомний хук для роботи з localStorage [`src/hooks/useLocalStorage.js`](./src/hooks/useLocalStorage.js)
-- Хук для запису та оновлення налаштувань [`src/hooks/useSetting.js`](./src/hooks/useSettings.js) 
+- [`src/store/store.js`](./src/store/store.js) - main file RTK
+- [`src/features/`](./src/features/) - feature structure for grouping Redux logic
 
 ---
 
-## 3) Розділення state по логічних групах
+## 2) Moving logic into custom hooks
 
-Замість одного великого стану “на все”, краще тримати **окремі useState** (або окремі slice-и в RTK) під різні логічні частини
-- Ігровий процес `score`, `total`
-- Налаштування `settings`
-- Питання `question`, `testKey`
-- UI стани `showModal`
-- Час `time`
+Moving logic from components (timers, data manipulation, queries) to custom hooks
+- the component becomes simpler and more readable;
+- the component is responsible for the UI;
+- the logic can be reused;
+- it is easier to test and maintain.
 
-- Розподілення локальних станів для тесту: [`src/pages/TestPage/TestPage.jsx`](/src/pages/TestPage/TestPage.jsx)
-- Окремий стан для налаштувань: [`src/pages/SettingsPage/SettingsPage.jsx`](./src/pages/SettingsPage/SettingsPage.jsx)
-- Глобальний стан результатів винесений у Redux Toolkit slice та відповідно структурований [`src/features/results/resultsSlice.js`](./src/features/results/resultsSlice.js)
-- Глобальний стан налаштувань тесту винесений в окремий Redux Toolkit slice з можливістю точкових оновлень,
-а також універсальний reducer `setSettings` для масового оновлення стану [`src/features/settings/settingsSlice.js`](./src/features/settings/settingsSlice.js)
-
----
-
-## 4) Винесення повторюваних helper-функцій та функціональної логіки в `utils`
-Винесення допоміжних функцій в utils для кращої структуризації та логічної диференціації функціоанальних елементів проєкту.
-Загалом це функції для обчислень або хелпер для персистенції Redux-стану
-Це покращує читабельність, чистоту коду та логічну структуризацію.
-
-[`src/utils/`](./src/utils/) - власне директорія utils
-- функція генерації питань тесту винесена в utils [`src/utils/testGenerate.js`](./src/utils/testGenerate.js)
-- функція персистенції Redux-стану в utils [`src/utils/persist.js`](./src/utils/persist.js)
+[`src/hooks/`](./src/hooks/) - directory with custom hooks
+- Custom hook for timer [`src/hooks/useTimer.js`](./src/hooks/useTimer.js)
+- Timer component (using timer hook) [`src/components/TimerComponent/TimerComponent.jsx`](./src/components/TimerComponent/TimerComponent.jsx)
+- A separate hook for regulating and controlling the test [`src/hooks/useQuiz.js`](./src/hooks/useQuiz.js)
+- Using the useQuiz hook directly for a component [`src/pages/TestPage/`](./src/pages/TestPage/TestPage.jsx)
+- Custom hook for working with localStorage [`src/hooks/useLocalStorage.js`](./src/hooks/useLocalStorage.js)
+- Hook for recording and updating settings [`src/hooks/useSetting.js`](./src/hooks/useSettings.js) 
 
 ---
 
-## 5) Feature-based структура для Redux (Redux Toolkit)
-Структуризація логіки для RTK на основі фіч (features).
-Покращує читабельність і структуру проєкту.
+## 3) Dividing state into logical groups
+
+Instead of one big state “for everything”, it is better to keep **separate useState** (or separate slices in RTK) for different logical parts
+- Gameplay `score`, `total`
+- Settings `settings`
+- Questions `question`, `testKey`
+- UI states `showModal`
+- Time `time`
+
+- Distribution of local states for the test: [`src/pages/TestPage/TestPage.jsx`](/src/pages/TestPage/TestPage.jsx)
+- Separate state for settings: [`src/pages/SettingsPage/SettingsPage.jsx`](./src/pages/SettingsPage/SettingsPage.jsx)
+- The global state of the results is rendered in a Redux Toolkit slice and structured accordingly [`src/features/results/resultsSlice.js`](./src/features/results/resultsSlice.js)
+- The global state of the test settings is moved to a separate Redux Toolkit slice with the possibility of point updates, as well as a universal reducer `setSettings` for mass state updates [`src/features/settings/settingsSlice.js`](./src/features/settings/settingsSlice.js)
+
+---
+
+## 4) Moving repetitive helper functions and functional logic to `utils`
+Moving helper functions to utils for better structuring and logical differentiation of functional elements of the project.
+Generally these are functions for calculations or helpers for Redux state persistence
+This improves readability, code cleanliness and logical structuring.
+
+[`src/utils/`](./src/utils/) - the utils directory itself
+- the test question generation function has been moved to utils [`src/utils/testGenerate.js`](./src/utils/testGenerate.js)
+- Redux state persistence function in utils [`src/utils/persist.js`](./src/utils/persist.js)
+
+---
+
+## 5) Feature-based framework for Redux (Redux Toolkit)
+Structuring logic for RTK based on features.
+Improves readability and project structure.
 
 - Settings slice: [`src/features/settings/settingsSlice.js`](./src/features/settings/settingsSlice.js)
 - Results slice: [`src/features/results/resultsSlice.js`](./src/features/results/resultsSlice.js)
-- Підключення редʼюсерів у store: [`src/store/store.js`](./src/store/store.js)
+- Connecting reducers in store: [`src/store/store.js`](./src/store/store.js)
 
 ---
 
-## Структура
+## Structure
 
 - `src/store/` — Redux Toolkit store main file
 - `src/features/` - Redux Toolkit slices
 - `src/hooks/` — custom hooks
-- `src/utils/` — helpers / утиліти
-- `src/components/` — UI-компоненти
-- `src/pages/` — сторінки/екрани
+- `src/utils/` — helpers / utilities
+- `src/components/` — UI-components
+- `src/pages/` — pages/screens
