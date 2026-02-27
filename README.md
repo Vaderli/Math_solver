@@ -1,20 +1,192 @@
 # Math Solver Quiz Application
 
-This is React project "Math solver" - Math quiz with timer and points. 
+## Project Description
 
-## Author
-Vadym Lishchynskyi
+**Math Solver** is a React-based web application designed to generate and manage interactive mathematical quizzes.
 
-Zhytomyr Polytechnic State University
+The application allows users to solve dynamically generated math problems under time constraints while tracking performance and results.
 
+The project demonstrates modern React development practices including:
 
+- Redux Toolkit state management
+- Custom hooks separation
+- Feature-based architecture
+- Modular structure
+- State persistence
+- Storybook component documentation
+- JSDoc generated documentation
+- GDPR-compliant cookie consent implementation
 
-
-# Best practices
+The application runs entirely on the client side and stores user progress locally in the browser.
 
 ---
 
-## 1) Using Redux Toolkit (RTK) instead of “plain Redux”
+## Author
+
+**Vadym Lishchynskyi**  
+Zhytomyr Polytechnic State University  
+
+---
+
+## Main Functionality
+
+The application provides the following features:
+
+- Dynamic math quiz generation
+- Configurable difficulty and test settings
+- Countdown timer with automatic test completion
+- Real-time score calculation
+- Result tracking using Redux Toolkit
+- Persistent state using localStorage
+- Settings management
+- Modular and scalable architecture
+- Storybook component documentation
+- JSDoc generated technical documentation
+- GDPR-compliant cookie consent popup
+
+---
+
+## Project Structure
+
+The project follows a feature-based and modular architecture:
+
+- `src/store/` — Redux Toolkit store main file
+- `src/features/` - Redux Toolkit slices
+- `src/hooks/` — custom hooks
+- `src/utils/` — helpers / utilities
+- `src/components/` — UI-components
+- `src/pages/` — pages/screens
+
+---
+
+## Installation and Setup
+
+### Requirements
+
+- Node.js (v16 or higher recommended)
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/Vaderli/Math_solver.git
+cd mathsolver
+npm install
+```
+
+### Run development server
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+---
+
+
+### Storybook
+
+Storybook is used to document and isolate UI components.
+
+Two components are documented:
+
+- TimerComponent
+
+- SettingsForm
+
+Each component includes:
+
+- Configurable props
+
+- 2–3 variations (stories)
+
+- Isolated UI rendering
+
+### Run StoryBook
+
+```bash
+npm run storybook
+```
+
+Storybook ensures UI consistency and component reusability.
+
+---
+
+### JSDoc
+
+JSDoc is used for automatic technical documentation generation.
+
+Documented modules include:
+
+- useQuiz.js
+- useTimer.js
+- useSettings.js
+- testGenerate.js
+
+### Generate documentation
+
+```bash
+npx jsdoc -c jsdoc.json
+```
+
+Generated documentation will be available in:
+
+`/docs`
+
+JSDoc improves maintainability and technical transparency of the project.
+
+### Privacy Policy
+
+This application does not collect or process personal data.
+
+#### Data Storage
+
+The application stores:
+
+- Quiz results
+- Test settings
+- Timer state
+
+All data is stored locally in the browser using localStorage.
+
+No data is:
+
+- Sent to external servers
+- Shared with third parties
+- Used for analytics or tracking
+
+#### Cookies
+
+A cookie consent popup is implemented to comply with GDPR requirements.
+
+Users may:
+
+- Accept or decline cookies
+- Clear stored data at any time by clearing browser storage
+
+### License
+
+This project is licensed under the `Apache License`.
+
+The full license text is available in the `LICENSE` file.
+
+Third-party dependencies were verified using `license-checker`, and the generated report is included in the root directory as:
+
+`license-report.txt`
+
+---
+
+
+### Best practices
+
+---
+
+### 1) Using Redux Toolkit (RTK) instead of “plain Redux”
 
 - Less boilerplate code
 - `configureStore` with out-of-the-box settings
@@ -27,7 +199,7 @@ Zhytomyr Polytechnic State University
 
 ---
 
-## 2) Moving logic into custom hooks
+### 2) Moving logic into custom hooks
 
 Moving logic from components (timers, data manipulation, queries) to custom hooks
 - the component becomes simpler and more readable;
@@ -45,7 +217,7 @@ Moving logic from components (timers, data manipulation, queries) to custom hook
 
 ---
 
-## 3) Dividing state into logical groups
+### 3) Dividing state into logical groups
 
 Instead of one big state “for everything”, it is better to keep **separate useState** (or separate slices in RTK) for different logical parts
 - Gameplay `score`, `total`
@@ -61,7 +233,7 @@ Instead of one big state “for everything”, it is better to keep **separate u
 
 ---
 
-## 4) Moving repetitive helper functions and functional logic to `utils`
+### 4) Moving repetitive helper functions and functional logic to `utils`
 Moving helper functions to utils for better structuring and logical differentiation of functional elements of the project.
 Generally these are functions for calculations or helpers for Redux state persistence
 This improves readability, code cleanliness and logical structuring.
@@ -72,21 +244,10 @@ This improves readability, code cleanliness and logical structuring.
 
 ---
 
-## 5) Feature-based framework for Redux (Redux Toolkit)
+### 5) Feature-based framework for Redux (Redux Toolkit)
 Structuring logic for RTK based on features.
 Improves readability and project structure.
 
 - Settings slice: [`src/features/settings/settingsSlice.js`](./src/features/settings/settingsSlice.js)
 - Results slice: [`src/features/results/resultsSlice.js`](./src/features/results/resultsSlice.js)
 - Connecting reducers in store: [`src/store/store.js`](./src/store/store.js)
-
----
-
-## Structure
-
-- `src/store/` — Redux Toolkit store main file
-- `src/features/` - Redux Toolkit slices
-- `src/hooks/` — custom hooks
-- `src/utils/` — helpers / utilities
-- `src/components/` — UI-components
-- `src/pages/` — pages/screens
