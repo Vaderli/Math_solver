@@ -1,6 +1,6 @@
 {
   "name": "mathsolver",
-  "private": true,
+  "author": "Vadym Lishchynskyi",
   "version": "0.0.0",
   "license": "Apache-2.0",
   "type": "module",
