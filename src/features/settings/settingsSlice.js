@@ -1,5 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * @typedef {"easy"|"medium"|"hard"} Difficulty
+ */
+
+/**
+ * @typedef {Object} SettingsState
+ * @property {Difficulty} difficulty - Quiz difficulty level.
+ * @property {number} count - Number of questions.
+ * @property {number} time - Timer duration in seconds.
+ */
+
+/** @type {SettingsState} */
 const initialState = {
   difficulty: "easy",
   count: 5,
@@ -7,20 +19,9 @@ const initialState = {
 };
 
 /**
- * Redux slice for managing quiz settings.
+ * Redux slice responsible for managing quiz settings.
  *
- * State structure:
- * {
- *   difficulty: "easy" | "medium" | "hard",
- *   count: number,
- *   time: number
- * }
- *
- * Exports:
- * - setDifficulty
- * - setTime
- * - setSettings
- * - reducer (default)
+ * @module settingsSlice
  */
 const settingsSlice = createSlice({
   name: "settings",
@@ -29,33 +30,31 @@ const settingsSlice = createSlice({
     /**
      * Sets quiz difficulty.
      *
-     * @param {Object} state
-     * @param {Object} action
-     * @param {"easy"|"medium"|"hard"} action.payload
+     * @param {SettingsState} state
+     * @param {{ payload: Difficulty }} action
      */
-    setDifficulty(state, action) 
-    {
+    setDifficulty(state, action) {
       state.difficulty = action.payload;
     },
+
     /**
      * Sets quiz timer duration.
      *
-     * @param {Object} state
-     * @param {Object} action
-     * @param {number} action.payload
+     * @param {SettingsState} state
+     * @param {{ payload: number }} action
      */
-    setTime(state, action) 
-    {
+    setTime(state, action) {
       state.time = action.payload;
     },
+
     /**
      * Updates multiple settings at once.
      *
-     * @param {Object} state
-     * @param {Object} action
+     * @param {SettingsState} state
+     * @param {{ payload: Partial<SettingsState> }} action
+     * @returns {SettingsState}
      */
-    setSettings(state, action) 
-    {
+    setSettings(state, action) {
       return { ...state, ...(action.payload || {}) };
     },
   },

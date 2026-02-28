@@ -98,16 +98,22 @@
 
         
             
-<h4 class="name" id="resultsSlice"><span class="type-signature">(constant) </span>resultsSlice<span class="type-signature"></span></h4>
+<h4 class="name" id="initialState"><span class="type-signature">(constant) </span>initialState<span class="type-signature"> :<a href="global.html#ResultsState">ResultsState</a></span></h4>
 
 
 
 
-<div class="description">
-    Redux slice for storing quiz results history.State structure:{  history: Array<Object>}Exports:- addResult- clearResults- setResults- reducer (default)
-</div>
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#ResultsState">ResultsState</a></span>
+
+
+        </li>
+    </ul>
 
 
 
@@ -142,7 +148,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="features_results_resultsSlice.js.html">features/results/resultsSlice.js</a>, <a href="features_results_resultsSlice.js.html#line21">line 21</a>
+        <a href="features_results_resultsSlice.js.html">features/results/resultsSlice.js</a>, <a href="features_results_resultsSlice.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -160,16 +166,22 @@
 
         
             
-<h4 class="name" id="settingsSlice"><span class="type-signature">(constant) </span>settingsSlice<span class="type-signature"></span></h4>
+<h4 class="name" id="initialState"><span class="type-signature">(constant) </span>initialState<span class="type-signature"> :<a href="global.html#SettingsState">SettingsState</a></span></h4>
 
 
 
 
-<div class="description">
-    Redux slice for managing quiz settings.State structure:{  difficulty: "easy" | "medium" | "hard",  count: number,  time: number}Exports:- setDifficulty- setTime- setSettings- reducer (default)
-</div>
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#SettingsState">SettingsState</a></span>
+
+
+        </li>
+    </ul>
 
 
 
@@ -204,7 +216,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="features_settings_settingsSlice.js.html">features/settings/settingsSlice.js</a>, <a href="features_settings_settingsSlice.js.html#line25">line 25</a>
+        <a href="features_settings_settingsSlice.js.html">features/settings/settingsSlice.js</a>, <a href="features_settings_settingsSlice.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -1568,6 +1580,539 @@
     
 
     
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="Difficulty">Difficulty</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">"easy"</span>
+|
+
+<span class="param-type">"medium"</span>
+|
+
+<span class="param-type">"hard"</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="features_settings_settingsSlice.js.html">features/settings/settingsSlice.js</a>, <a href="features_settings_settingsSlice.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="QuizResult">QuizResult</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>score</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">User score.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>total</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Total questions count.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Date</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Date of quiz completion.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="features_results_resultsSlice.js.html">features/results/resultsSlice.js</a>, <a href="features_results_resultsSlice.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="ResultsState">ResultsState</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>history</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#QuizResult">QuizResult</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Array of quiz results.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="features_results_resultsSlice.js.html">features/results/resultsSlice.js</a>, <a href="features_results_resultsSlice.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="SettingsState">SettingsState</h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>difficulty</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Difficulty">Difficulty</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Quiz difficulty level.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>count</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of questions.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Timer duration in seconds.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="features_settings_settingsSlice.js.html">features/settings/settingsSlice.js</a>, <a href="features_settings_settingsSlice.js.html#line7">line 7</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+    
 
     
 </article>
@@ -1580,13 +2125,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#resultsSlice">resultsSlice</a></li><li><a href="global.html#settingsSlice">settingsSlice</a></li><li><a href="global.html#shuffleOptions">shuffleOptions</a></li><li><a href="global.html#testGenerate">testGenerate</a></li><li><a href="global.html#useQuiz">useQuiz</a></li><li><a href="global.html#useSettings">useSettings</a></li><li><a href="global.html#useTimer">useTimer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-resultsSlice.html">resultsSlice</a></li><li><a href="module-settingsSlice.html">settingsSlice</a></li></ul><h3>Global</h3><ul><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#shuffleOptions">shuffleOptions</a></li><li><a href="global.html#testGenerate">testGenerate</a></li><li><a href="global.html#useQuiz">useQuiz</a></li><li><a href="global.html#useSettings">useSettings</a></li><li><a href="global.html#useTimer">useTimer</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sat Feb 28 2026 12:55:54 GMT+0200 (за східноєвропейським стандартним часом)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Sat Feb 28 2026 13:29:40 GMT+0200 (за східноєвропейським стандартним часом)
 </footer>
 
 <script> prettyPrint(); </script>
