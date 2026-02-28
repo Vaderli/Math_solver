@@ -26,6 +26,8 @@ The application runs entirely on the client side and stores user progress locall
 **Vadym Lishchynskyi**  
 Zhytomyr Polytechnic State University  
 
+Video demonstration: https://drive.google.com/file/d/1bc-MT0hIeh6STK0eyE-fVSrmGK0t9ujU/view?usp=sharing
+
 ---
 
 ## Main Functionality
