@@ -9,6 +9,7 @@ import ResultTable from "./pages/ResultTable/ResultTable";
 
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 function App() {
   const router = createBrowserRouter(
@@ -28,9 +29,12 @@ function App() {
   )
 
   return(
-    <Provider store={store}>
+    <>
+     <Provider store={store}>
+      <CookieConsent />
       <RouterProvider router={router}/>
     </Provider>
+    </>
   );
 }
 
