@@ -1,5 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 
+/**
+ * Custom hook that manages countdown timer.
+ *
+ * @param {number} allTime - Initial time in seconds
+ * @param {Function} onTimeOver - Callback when time ends
+ * @param {boolean} isTick - Pause flag (true = paused)
+ * @param {string|number} key - Restart key
+ *
+ * @returns {Object}
+ * @returns {number} returns.timer - Current timer value
+ * @returns {Function} returns.tick - Manual tick function
+ */
 export function useTimer(allTime = 180, onTimeOver, isTick, key) {
   const [timer, setTimer] = useState(allTime);
   const intervalRef = useRef(null);
@@ -10,7 +22,10 @@ export function useTimer(allTime = 180, onTimeOver, isTick, key) {
     isTickRef.current = isTick;
   }, [isTick]);
 
-
+  /**
+ * Decreases timer by 1 second.
+ * Stops timer and calls onTimeOver when reaches 0.
+ */
   const tick = () => {
     setTimer((prev) => {
       if (prev <= 1)

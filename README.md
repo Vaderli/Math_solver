@@ -80,6 +80,8 @@ npm install
 npm run dev
 ```
 
+Application runs in the link: http://localhost:5173
+
 ### Build for production
 
 ```bash
@@ -127,6 +129,7 @@ Documented modules include:
 - useTimer.js
 - useSettings.js
 - testGenerate.js
+- Redux slices
 
 ### Generate documentation
 
