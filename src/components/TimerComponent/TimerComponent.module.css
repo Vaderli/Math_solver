@@ -1,4 +1,3 @@
-
 .timer {
   font-size: 1.6rem;
   font-weight: bold;
@@ -10,11 +9,34 @@
   border-radius: 10px;
   border: 2px dashed #c39a00;
 
-  transform: rotate(-2deg);
   animation: timerPop 0.4s ease-out;
+  transition: all 0.3s ease;
+}
+
+.timer:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.expired {
+  background: #ff4d4d;
+  border-color: #b30000;
+  color: white;
 }
 
 @keyframes timerPop {
   0% { transform: scale(0.7) rotate(-2deg); opacity: 0; }
   100% { transform: scale(1) rotate(-2deg); opacity: 1; }
+}
+
+.critical {
+  background: #d0e7ff;
+  border-color: #4da6ff;
+  color: #003366;
+  animation: shake 0.3s infinite alternate;
+}
+
+@keyframes shake {
+  0% { transform: rotate(-2deg) translateX(-1px); }
+  100% { transform: rotate(-2deg) translateX(1px); }
 }

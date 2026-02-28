@@ -1,18 +1,36 @@
-import {useTimer} from "../../hooks/useTimer";
+import { useTimer } from "../../hooks/useTimer";
 import styles from "./TimerComponent.module.css";
 
-function TimerComponent({allTime, onTimeOver, isTick, key})
-{
+function TimerComponent({
+  allTime,
+  onTimeOver,
+  isTick,
+  timerValue,
+  useHook = true
+}) {
 
-    const {timer} = useTimer(allTime, onTimeOver, isTick, key);
+  const hookData = useHook
+    ? useTimer(allTime, onTimeOver, isTick)
+    : null;
 
-    return (
-        <>
-        <div className={styles.timer}>
-        <span>{timer}</span>
-        </div>
-        </>
-    );
+  const timer = useHook ? hookData.timer : timerValue;
+
+  const isExpired = timer === 0;
+  const isCritical = timer > 0 && timer <= 3;
+
+  return (
+    <div
+      className={`${styles.timer}
+        ${isExpired ? styles.expired : ""}
+        ${isCritical ? styles.critical : ""}
+      `}
+    >
+      <span>
+        {timer}
+        {isCritical && " 😨"}
+      </span>
+    </div>
+  );
 }
 
 export default TimerComponent;
