@@ -18,3 +18,7 @@ store.subscribe(() => {
   const state = store.getState();
   saveStatePartially(state);
 });
+
+window.addEventListener("cookie-consent-updated", () => {
+  saveStatePartially(store.getState());
+});

@@ -1,10 +1,5 @@
 import { useLocalStorage } from "./useLocalStorage";
-
-const DEFAULT_SET = {
-  difficulty: "easy",
-  count: 5,
-  time: 60,
-};
+import { DEFAULT_SETTINGS, canSavePreferences } from "../utils/cookieConsent";
 
 /**
  * Custom hook for managing quiz settings
@@ -14,19 +9,21 @@ const DEFAULT_SET = {
  * @returns {Object} returns.settings - Current settings
  * @returns {Function} returns.updateSettings - Update settings
  */
-export function useSettings() 
-{
-  const [settings, setSettings] = useLocalStorage(
-    "quizSettings", DEFAULT_SET
-  );
+export function useSettings() {
+  const [settings, setSettings] = useLocalStorage("quizSettings", DEFAULT_SETTINGS);
 
   /**
- * Updates quiz settings and saves them to localStorage.
- *
- * @param {Object} newSettings - New settings object
- */
+   * Updates quiz settings and saves them to localStorage.
+   *
+   * @param {Object} newSettings - New settings object
+   */
   const updateSettings = (newSettings) => {
-    setSettings(newSettings);
+    if (canSavePreferences()) {
+      setSettings(newSettings);
+      return;
+    }
+
+    setSettings(DEFAULT_SETTINGS);
   };
 
   return { settings, updateSettings };

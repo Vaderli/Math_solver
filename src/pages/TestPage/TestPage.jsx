@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserGuard } from "../../hooks/useUserGuard";
 import { useDispatch, useSelector } from "react-redux";
 import { addResult } from "../../features/results/resultsSlice";
+import { canSaveResults } from "../../utils/cookieConsent";
 
 function TestPage() {
   useUserGuard();
@@ -21,11 +22,14 @@ function TestPage() {
   const [showModal, setShowModal] = useState(false);
 
   const onFinish = (finalScore, total) => {
-    dispatch(addResult({
-      score: finalScore,
-      total,
-      date: new Date().toISOString(),
-    }));
+    if (canSaveResults()) {
+      dispatch(addResult({
+        score: finalScore,
+        total,
+        date: new Date().toISOString(),
+      }));
+    }
+
     setShowModal(true);
   };
 

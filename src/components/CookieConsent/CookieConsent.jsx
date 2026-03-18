@@ -1,65 +1,88 @@
 import { useState, useEffect } from "react";
 import styles from "./CookieConsent.module.css";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
-
-const STORAGE_KEY = "math_solver_cookie_consent";
+import {
+  clearOptionalStoredData,
+  getConsent,
+  saveConsent,
+} from "../../utils/cookieConsent";
 
 const CookieConsent = () => {
-  const [consent, setConsent] = useLocalStorage(STORAGE_KEY, null);
   const [visible, setVisible] = useState(false);
-  const [preferences, setPreferences] = useState(false);
+  const [preferences, setPreferences] = useState(true);
 
   useEffect(() => {
-    if (!consent) {
+    const savedConsent = getConsent();
+
+    if (!savedConsent) {
       setVisible(true);
+      return;
     }
-  }, [consent]);
 
-  const handleAccept = () => {
-    const consentData = {
+    setPreferences(savedConsent.preferences === true);
+  }, []);
+
+  const applyConsent = (allowPreferences) => {
+    saveConsent({
       necessary: true,
-      preferences,
+      preferences: allowPreferences,
       timestamp: new Date().toISOString(),
-    };
+    });
 
-    setConsent(consentData);
+    if (!allowPreferences) {
+      clearOptionalStoredData();
+    }
+
+    setPreferences(allowPreferences);
     setVisible(false);
+    window.dispatchEvent(new Event("cookie-consent-updated"));
   };
 
-  if (!visible) 
+  if (!visible) {
     return null;
+  }
 
   return (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="cookie-title">
       <div className={styles.modal}>
-        <h2>Cookie Settings</h2>
-        <p>
-          This application uses browser storage to save quiz settings,
-          results, and improve user experience in compliance with GDPR.
+        <h2 id="cookie-title">Cookie preferences</h2>
+        <p className={styles.description}>
+          We use essential browser storage to run the test. Optional storage saves your quiz
+          settings and results on this device. You can continue with essential storage only
+          or allow optional preferences storage too.
         </p>
 
         <div className={styles.options}>
-          <label>
+          <label className={styles.optionRow}>
             <input type="checkbox" checked disabled />
-            Necessary storage (required for application functionality)
+            <span>Necessary storage (required for application functionality)</span>
           </label>
 
-          <label>
+          <label className={styles.optionRow}>
             <input
               type="checkbox"
               checked={preferences}
-              onChange={() => setPreferences(!preferences)}
+              onChange={() => setPreferences((current) => !current)}
             />
-            Preferences storage (quiz settings & results)
+            <span>Preferences storage (save quiz settings and results)</span>
           </label>
         </div>
 
-        <button
-          onClick={handleAccept}
-          className={styles.acceptBtn}
-        >
-          Accept
-        </button>
+        <div className={styles.actions}>
+          <button
+            type="button"
+            onClick={() => applyConsent(false)}
+            className={styles.secondaryBtn}
+          >
+            Necessary only
+          </button>
+          <button
+            type="button"
+            onClick={() => applyConsent(preferences)}
+            className={styles.acceptBtn}
+          >
+            Save my choice
+          </button>
+        </div>
       </div>
     </div>
   );
